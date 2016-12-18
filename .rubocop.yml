@@ -1,0 +1,19 @@
+# inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Include:
+    - Rakefile
+    - Gemfile
+    - config.ru
+  Exclude:
+    - config/**/*
+    - db/**/*
+    - bin/**/*
+    - script/**/*
+    - features/support/**/*
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Documentation:
+  Enabled: false

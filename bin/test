@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+module Testing
+  module_function
+
+  def run_all
+    Testing.run_rubocop
+    Testing.run_minitest
+    Testing.run_cucumber
+  end
+
+  def run_rubocop
+    require "rubocop"
+    require "benchmark"
+    cli = RuboCop::CLI.new
+    time = Benchmark.realtime do
+      result = cli.run
+    end
+  end
+
+  def run_minitest
+    finished_tests = system("rake test")
+    #puts("Minitest finished with: #{$?.exitstatus}")
+  end
+
+  def run_cucumber
+    require "cucumber"
+    args = Dir.glob("features/**/*.feature")
+    Cucumber::Cli::Main.new(args).execute!
+
+  rescue SystemExit => e
+    exit e.status unless e.status == 0
+  end
+
+end
+
+test_type = ARGV.shift
+
+case test_type
+when "rubocop"
+  Testing.run_rubocop
+when "minitest"
+  Testing.run_minitest
+when "cucumber"
+  Testing.run_cucumber
+else
+  Testing.run_all
+end

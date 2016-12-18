@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Bootstrap gem dependencies
+gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,8 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a
+  # debugger console
   gem 'byebug'
+  gem 'minitest-rails', '~> 2.0'
   gem 'pry-rails'
   gem 'rubocop'
 end
@@ -42,8 +45,12 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
   gem 'cucumber-rails', require: false
-  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'minitest-rails-capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
