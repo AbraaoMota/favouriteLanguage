@@ -1,7 +1,11 @@
-require 'test_helper'
+require "test_helper"
 
 class GithubUserTest < ActiveSupport::TestCase
-  test 'the truth' do
-    assert true
+  def github_user
+    @github_user ||= GithubUser.new
+  end
+
+  def test_valid
+    assert github_user.valid?
   end
 end

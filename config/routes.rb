@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
+  resources :github_users
   get "/" => "index#index", as: "index"
-
-  resources :github_user
 end
