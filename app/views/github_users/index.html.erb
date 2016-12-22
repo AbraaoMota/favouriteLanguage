@@ -1,7 +1,17 @@
-<h1> YO BRO </h1>
-<p> Seems that <%= user.name %>'s favourite language is: <%= language %></p>
-<% for repo in repos %>
-  <div>
-    <p><%= repo.language %></p>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 text-center">
+    <h2><%= favourite_language_formatter(user.name, user.favourite_language) %></h2>
+
+    <% if repos.size > 0 %>
+      <p><%= user.name %> has repos in the following languages:</p>
+      <%= pie_chart user.language_count %>
+    <% end %>
+
+    <div class="col-xs-4 col-xs-offset-4 text-center">
+      <%= link_to 'Try another user', index_path, class: 'btn btn-block btn-info'  %>
+    </div>
   </div>
-<% end %>
+</div>

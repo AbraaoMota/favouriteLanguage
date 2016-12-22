@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20161220172755) do
 
   create_table "github_users", force: :cascade do |t|
-    t.text     "name"
-    t.text     "favourite_language"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "name"
+    t.string   "favourite_language", default: "--- []\n"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
 end

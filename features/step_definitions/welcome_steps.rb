@@ -7,6 +7,18 @@ Then(/^I am greeted by the page$/) do
 end
 
 Then(/^I can search for a user name$/) do
-  assert page.has_content?('Search for a user:')
-  # Have a search box here
+  assert page.has_field?('Search for')
+end
+
+Given(/^I am at the index page$/) do
+  visit index_path
+end
+
+When(/^I search for a user name$/) do
+  fill_in 'name', with: 'AbraaoMota'
+  click_on 'Search'
+end
+
+Then(/^I can see that user's favourite language$/) do
+  assert page.has_content?("abraaomota's favourite language")
 end

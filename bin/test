@@ -12,24 +12,24 @@ module Testing
   def run_rubocop
     require "rubocop"
     require "benchmark"
-    cli = RuboCop::CLI.new
+    rubocop_cli = RuboCop::CLI.new
+    result = 0
     time = Benchmark.realtime do
-      result = cli.run
+      result = rubocop_cli.run
     end
+    exit result if result != 0
   end
 
   def run_minitest
     finished_tests = system("rake test")
-    #puts("Minitest finished with: #{$?.exitstatus}")
+    result = $?.exitstatus
+    exit result if result != 0
   end
 
   def run_cucumber
-    require "cucumber"
-    args = Dir.glob("features/**/*.feature")
-    Cucumber::Cli::Main.new(args).execute!
-
-  rescue SystemExit => e
-    exit e.status unless e.status == 0
+    finished_tests = system("rake cucumber")
+    result = $?.exitstatus
+    exit result if result != 0
   end
 
 end
