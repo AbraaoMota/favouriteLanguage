@@ -1,6 +1,12 @@
 # favouriteLanguage
 ## Determine a Github user's favourite language.
 
+### Installation
+
+Make sure you have Ruby and Ruby on Rails installed.
+This was created on Ruby version 2.2.4 and Rails 4.2.5.1
+Once you clone the repo, run `bundle install`, and this should install any dependencies required to set up the project.
+
 ### Usage
 
 Run `rails s` to start the local server, and access the webpage at "http://localhost:3000"
@@ -31,8 +37,3 @@ This is designed to run sequentially, such that it will not complete execution i
   - Go to Control Panel -> Find the setting labelled 'Edit the system environment variables'
   - Click 'Environment Variables'
   - Add a New User Variable called 'SSL_CERT_FILE' with value 'C:\RailsInstaller\cacert.pem` (As opposed to setting as in the tutorial as this will leave it as a permanent variable)
-
-
-### TODO
-
-- Fix weird rake gem cleanup bug when running cucumber on its own. `bundle exec cucumber` doesn't suffer from the same issue. -> Maybe an import in env.rb?
