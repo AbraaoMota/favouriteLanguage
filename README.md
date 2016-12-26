@@ -6,11 +6,13 @@
 Make sure you have Ruby and Ruby on Rails installed.
 This was created on Ruby version 2.2.4 and Rails 4.2.5.1
 Once you clone the repo, run `bundle install`, and this should install any dependencies required to set up the project.
+To prepare the database, run `rake db:migrate`; this prepares it for the development environment.
 
 ### Usage
 
 Run `rails s` to start the local server, and access the webpage at "http://localhost:3000"
 
+To run the test suite, you may be required to run `rake db:migrate RAILS_ENV=test` to prepare the test database for the first time.
 Run `bin/test` to run the entire testsuite.
 The test suite is made up of:
   - Rubocop Ruby standard checks
